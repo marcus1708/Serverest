@@ -1,7 +1,7 @@
 Cypress.Commands.add('cad_user', (cria_usuario)=>{
     cy.api({
         method: 'POST',
-        url: 'http://localhost:3000/usuarios',
+        url: 'https://serverest.dev/usuarios',
         body:cria_usuario
         }).then((response) => {
             expect(response.status).to.eq(201);
@@ -10,7 +10,7 @@ Cypress.Commands.add('cad_user', (cria_usuario)=>{
 Cypress.Commands.add('login', (login)=>{
     cy.api({
         method: 'POST',
-        url: 'http://localhost:3000/login',
+        url: 'https://serverest.dev/login',
         body:login
       }).then(function(response){
           expect(response.status).to.eq(200);
@@ -19,7 +19,7 @@ Cypress.Commands.add('login', (login)=>{
 Cypress.Commands.add('cad_prod', (cria_produto)=>{
     cy.api({
         method: 'POST',
-        url: 'http://localhost:3000/produtos',
+        url: 'https://serverest.dev/produtos',
         body:cria_produto,
         headers: {
             authorization: Cypress.env('token')
@@ -31,35 +31,35 @@ Cypress.Commands.add('cad_prod', (cria_produto)=>{
 Cypress.Commands.add('busc_user', ()=>{
     cy.api({
         method: 'GET',
-        url: 'http://localhost:3000/usuarios'
+        url: 'https://serverest.dev/usuarios'
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })
 Cypress.Commands.add('busc_user_id', ()=>{
     cy.api({
         method: 'GET',
-        url: `http://localhost:3000/usuarios/${Cypress.env('id')}`
+        url: `https://serverest.dev/usuarios/${Cypress.env('id')}`
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })
 Cypress.Commands.add('busc_prod', ()=>{
     cy.api({
         method: 'GET',
-        url: 'http://localhost:3000/produtos'
+        url: 'https://serverest.dev/produtos'
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })
 Cypress.Commands.add('busc_prod_id', (atual_usuario)=>{
     cy.api({
         method: 'GET',
-        url: `http://localhost:3000/produtos/${Cypress.env('id_p')}`
+        url: `https://serverest.dev/produtos/${Cypress.env('id_p')}`
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })
 Cypress.Commands.add('atual_user', (atual_usuario)=>{
     cy.api({
         method: 'PUT',
-        url: `http://localhost:3000/usuarios/${Cypress.env('id')}`,
+        url: `https://serverest.dev/usuarios/${Cypress.env('id')}`,
         body: atual_usuario,
         headers: {
             authorization: Cypress.env('token')
@@ -70,7 +70,7 @@ Cypress.Commands.add('atual_user', (atual_usuario)=>{
 Cypress.Commands.add('atual_prod', (atual_produto)=>{
     cy.api({
         method: 'PUT',
-        url: `http://localhost:3000/produtos/${Cypress.env('id_p')}`,
+        url: `https://serverest.dev/produtos/${Cypress.env('id_p')}`,
         body: atual_produto,
         headers: {
             authorization: Cypress.env('token')
@@ -81,7 +81,7 @@ Cypress.Commands.add('atual_prod', (atual_produto)=>{
 Cypress.Commands.add('cad_carr', ()=>{
     cy.api({
         method: 'POST',
-        url: 'http://localhost:3000/carrinhos',
+        url: 'https://serverest.dev/carrinhos',
         body:{
             "produtos":[{   
                 "idProduto": Cypress.env('id_p'),
@@ -98,21 +98,21 @@ Cypress.Commands.add('cad_carr', ()=>{
 Cypress.Commands.add('list_carr', ()=>{
     cy.api({
         method: 'GET',
-        url: 'http://localhost:3000/carrinhos'
+        url: 'https://serverest.dev/carrinhos'
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })
 Cypress.Commands.add('carr_id', ()=>{
     cy.api({
         method: 'GET',
-        url: `http://localhost:3000/carrinhos/${Cypress.env('id_c')}`
+        url: `https://serverest.dev/carrinhos/${Cypress.env('id_c')}`
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })
 Cypress.Commands.add('del_carr', ()=>{
     cy.api({
         method: 'DELETE',
-        url: 'http://localhost:3000/carrinhos/cancelar-compra/',
+        url: 'https://serverest.dev/carrinhos/cancelar-compra/',
         headers: {
             authorization: Cypress.env('token')
         }
@@ -122,7 +122,7 @@ Cypress.Commands.add('del_carr', ()=>{
 Cypress.Commands.add('del_prod', ()=>{
     cy.api({
         method: 'DELETE',
-        url: `http://localhost:3000/produtos/${Cypress.env('id_p')}`,
+        url: `https://serverest.dev/produtos/${Cypress.env('id_p')}`,
         headers: {
             authorization: Cypress.env('token')
         }
@@ -132,7 +132,7 @@ Cypress.Commands.add('del_prod', ()=>{
 Cypress.Commands.add('del_user', ()=>{
     cy.api({
         method: 'DELETE',
-        url: `http://localhost:3000/usuarios/${Cypress.env('id')}`
+        url: `https://serverest.dev/usuarios/${Cypress.env('id')}`
     }).then((response) => {
         expect(response.status).to.eq(200);});
 })

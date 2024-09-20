@@ -1,17 +1,17 @@
-Cypress.Commands.add('Login', ()=>{
+Cypress.Commands.add('Login', (name,Email,senha)=>{
     cy.visit('https://front.serverest.dev/login')  
     cy.get('[data-testid="cadastrar"]').click()
-    cy.get('[data-testid="nome"]').type('testeA')
-    cy.get('[data-testid="email"]').type('testeA@teste.com')
-    cy.get('[data-testid="password"]').type('testeA')
+    cy.get('[data-testid="nome"]').type(name)
+    cy.get('[data-testid="email"]').type(Email);
+    cy.get('[data-testid="password"]').type(senha)
     cy.get('[data-testid="checkbox"]').check()
     cy.get('[data-testid="cadastrar"]').click()
     cy.get('.alert').should('be.visible')
 })
-Cypress.Commands.add('Verif_login', ()=>{
+Cypress.Commands.add('Verif_login', (Email,senha)=>{
     cy.visit('https://front.serverest.dev/')
-    cy.get('[data-testid="email"]').type('testeA@teste.com');
-    cy.get('[data-testid="senha"]').type('testeA');
+    cy.get('[data-testid="email"]').type(Email);
+    cy.get('[data-testid="senha"]').type(senha);
     cy.get('[data-testid="entrar"]').click()
     cy.get('h1').should('be.visible')
 })

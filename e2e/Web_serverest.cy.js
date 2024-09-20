@@ -3,6 +3,7 @@ describe('Automaçao WEB Serverest', () => {
     const name = faker.person.firstName();
     const senha = faker.internet.password();
     const Email = faker.internet.email();
+    const qtidade = faker.number.int(10000);
     beforeEach('Realiza Login no sistema', function() {
         cy.Verif_login(Email,senha)
     });
@@ -10,7 +11,7 @@ describe('Automaçao WEB Serverest', () => {
         cy.Login(name,Email,senha)
     });
     it  ('Cadastra Produto no sistema', function() {
-        cy.Cad_Prod()
+        cy.Cad_Prod(name,qtidade)
     }); 
     it('Lista Produto cadastrado', function() {
         cy.Lista_Prod()
